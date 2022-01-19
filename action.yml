@@ -14,7 +14,7 @@ inputs:
       Logseq version to use. Note, not all version are supported.
       Use "master" if you are not sure what to put here
     required: true
-    default: "master"
+    default: "beta"
   trace:
     description: >
       Whether or not to generate trace file for debugging.  
@@ -30,7 +30,7 @@ runs:
       run: mkdir -p ${{ github.workspace }}/${{ inputs.dest }}
     - uses: addnab/docker-run-action@v3
       with:
-        image: "ghcr.io/pengx17/logseq-publish:${{ inputs.version }}"
+        image: "ghcr.io/imyelo/logseq-publish:${{ inputs.version }}"
         options: |
           -v ${{ github.workspace }}:/home/logseq/graph -v ${{ github.workspace }}/${{ inputs.dest }}:/home/logseq/graph-www
         run: |
